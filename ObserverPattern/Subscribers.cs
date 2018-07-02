@@ -4,12 +4,11 @@ namespace ObserverPattern
 {
     public class SubscriberA : ISubscriber
     {
-        IPublisher _publisher;
+        private IPublisher _publisher;
 
         public SubscriberA(IPublisher publisher)
         {
             _publisher = publisher;
-            
         }
 
         public void Subscribe()
@@ -30,12 +29,11 @@ namespace ObserverPattern
 
     public class SubscriberB : ISubscriber
     {
-        IPublisher _publisher;
+        private IPublisher _publisher;
 
         public SubscriberB(IPublisher publisher)
         {
             _publisher = publisher;
-
         }
 
         public void Subscribe()

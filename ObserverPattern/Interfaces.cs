@@ -9,6 +9,8 @@ namespace ObserverPattern
 
     public interface IPublisher
     {
+        PublisherData PublisherData { get; set; }
+
         //Register a subscriber with the publisher
         void RegisterSubscriber(ISubscriber subscriber);
 
@@ -17,13 +19,13 @@ namespace ObserverPattern
 
         //Notifies all subscribers when the publisher's state has changed
         void NotifySubscribers();
-
-        PublisherData PublisherData { get; set; }
     }
 
     public interface ISubscriber
     {
+        //subscribe for notification
         void Subscribe();
+
         void Unsubscribe();
 
         //Updates the subscriber with data from the publisher
