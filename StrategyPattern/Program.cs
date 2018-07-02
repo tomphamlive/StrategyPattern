@@ -25,6 +25,12 @@ namespace StrategyPattern
                 duck.Fly();
                 Console.WriteLine();
             }
+
+            Duck2 rubberDuck = new RubberDuck2();
+            rubberDuck.Display();
+            rubberDuck.Fly();
+            rubberDuck.FlyBehavior = new FlyWithWings();
+            rubberDuck.Fly();
         }
     }
-}
+}  

@@ -1,19 +1,21 @@
 ﻿using System;
 
+//Strategy is a behavior pattern that enables selection of different behaviors at runtime.
+//Behaviors of a class shouldn't be inherited, but should be encapsulated using interfaces.
+//Strategy follows the Open-Close principle, in which classes are open for extension (via interfaces), but closed for modification.
 namespace StrategyPattern
 {
-    //In our Duck class, Quack and Fly vary across ducks, so we're going to separate them from Duck
-    //and put them into Interfaces.
+    //In our Duck class, Quack and Fly are behaviors that vary across ducks,
+    //so they are separated from Duck, and encapsulated into Interfaces (IFlyBehavior and IQuackBehavior)
     //These interfaces will be implemented by some other class; NOT the Duck class
-
-    //The superclass will be composed of these interfaces
     public abstract class Duck2   
     {
-        //favor Composition over Inheritance
-        protected IFlyBehavior FlyBehavior { get; set; }
-        protected IQuackBehavior QuackBehavior { get; set; }
+        //The Duck class, however, is composed of these interfaces
+        //Favor Composition over Inheritance
+        public IFlyBehavior FlyBehavior { get; set; }
+        public IQuackBehavior QuackBehavior { get; set; }
 
-        //Implementation of Fly and Quack is delegated to the interfaces
+        //Implementation of Fly and Quack is delegated to some other classes that implements the interfaces, not Duck
         public void Fly()
         {
             FlyBehavior.Fly();
@@ -23,7 +25,7 @@ namespace StrategyPattern
             QuackBehavior.Quack();
         }
 
-        public virtual void Swim()
+        public void Swim()
         {
             Console.WriteLine("swim swim");
         }
