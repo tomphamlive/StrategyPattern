@@ -6,7 +6,7 @@ namespace ObserverPattern
     {
         static void Main(string[] args)
         {
-            IPublisher publisher = new Publisher();
+            var publisher = new Publisher();
 
             ISubscriber subscriberA = new SubscriberA(publisher);
             subscriberA.Subscribe();
@@ -18,16 +18,18 @@ namespace ObserverPattern
 
             //when publisher's data is changed
             //subscribers get notified
-            Console.WriteLine("Publisher's data is set.");
-            publisher.PublisherData = new PublisherData { DoubleData = 5.8 };
+            Console.WriteLine("Publisher's data is modified.");
+            publisher.ModifyData();
+            publisher.ModifyData();
 
             //one subscriber unsubscribes
             subscriberB.Unsubscribe();
             Console.WriteLine("B unsubscribed");
 
             //change data again
-            Console.WriteLine("Publisher's data is set.");
-            publisher.PublisherData = new PublisherData { DoubleData = 25.8 };
+            Console.WriteLine("Publisher's data is modified.");
+            publisher.ModifyData();
+            publisher.ModifyData();
 
             //only subscriberA is notified
         }

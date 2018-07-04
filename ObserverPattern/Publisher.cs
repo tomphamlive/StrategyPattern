@@ -6,24 +6,29 @@ namespace ObserverPattern
     {
         private List<ISubscriber> _subscribers = new List<ISubscriber>();
 
-        private PublisherData _publisherData;
-        public PublisherData PublisherData
+        private double _data;
+        public double Data
         {
-            get => _publisherData;
-            set
+            get => _data;
+            private set
             {
-                _publisherData = value;
+                _data = value;
                 NotifySubscribers();
             }
         }
 
-        public void RegisterSubscriber(ISubscriber subscriber)
+        public void ModifyData()
+        {
+            Data += 2;
+        }
+
+        public void Register(ISubscriber subscriber)
         {
             if (!_subscribers.Contains(subscriber))
                 _subscribers.Add(subscriber);
         }
 
-        public void RemoveSubscriber(ISubscriber subscriber)
+        public void Unregister(ISubscriber subscriber)
         {
             if (_subscribers.Contains(subscriber))
                 _subscribers.Remove(subscriber);
@@ -33,7 +38,7 @@ namespace ObserverPattern
         {
             foreach (var subscriber in _subscribers)
             {
-                subscriber.Update(PublisherData);
+                subscriber.Update(Data);
             }
         }
     }

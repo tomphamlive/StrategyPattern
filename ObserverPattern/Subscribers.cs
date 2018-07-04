@@ -13,17 +13,17 @@ namespace ObserverPattern
 
         public void Subscribe()
         {
-            _publisher.RegisterSubscriber(this);
+            _publisher.Register(this);
         }
 
         public void Unsubscribe()
         {
-            _publisher.RemoveSubscriber(this);
+            _publisher.Unregister(this);
         }
 
-        public void Update(PublisherData publisherData)
+        public void Update(object publisherData)
         {
-            Console.WriteLine($"SubscriberA received data: {publisherData.DoubleData}");
+            Console.WriteLine($"SubscriberA received data: {publisherData}");
         }
     }
 
@@ -38,17 +38,17 @@ namespace ObserverPattern
 
         public void Subscribe()
         {
-            _publisher.RegisterSubscriber(this);
+            _publisher.Register(this);
         }
 
         public void Unsubscribe()
         {
-            _publisher.RemoveSubscriber(this);
+            _publisher.Unregister(this);
         }
 
-        public void Update(PublisherData publisherData)
+        public void Update(object publisherData)
         {
-            Console.WriteLine($"SubscriberB received data: {publisherData.DoubleData}");
+            Console.WriteLine($"SubscriberB received data: {publisherData}");
         }
     }
 }
