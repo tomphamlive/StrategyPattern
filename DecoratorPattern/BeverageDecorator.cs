@@ -1,5 +1,5 @@
 ﻿//Decorator pattern is used to extend behaviors of a class
-//by composing the class in another class of the same type.
+//by composing the class in a decorator class of the same type.
 namespace DecoratorPattern
 {
     //BeverageDecorator "decorates" or extends behaviors

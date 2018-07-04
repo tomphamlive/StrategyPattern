@@ -6,12 +6,12 @@ namespace DecoratorPattern
     {
         static void Main(string[] args)
         {
-            //order a dark roast
+            //I order a dark roast, which is a beverage with a description and a cost
             Beverage darkRoast = new DarkRoast();
             Console.WriteLine(darkRoast.Description + " " + darkRoast.Cost());
 
-            //order a dark roast with mocha and steam milk
-            //Decorate using composition
+            //How do I extend the description and cost of this beverage
+            //if I want to add mocha and steam milk to my dark roast?
             Beverage beverage = new SteamMilk(new Mocha(darkRoast));
             Console.WriteLine(beverage.Description + " " + beverage.Cost());
         }
